@@ -44,14 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
       songsList.push(song);
     });
 
-    // albumList.push(songsList[0])
-    console.log(songsList);
+    //Fills albumList[]
     fillAlbumList();
     showCards(songsList, Showing);
-    console.log(albumList);
-    // showCardsAlbums(albumList)
   })
 
+  //Intial Button On
   let SongButton = document.getElementById('song-button');
   SongButton.classList.add('active');
   SongButton.classList.remove('deactive');
@@ -86,17 +84,18 @@ function showCards(list, amount=list.length) {
   }
 }
 
+// Edits the cards
 function editCardContentSongs(card, songThumbnailUrl, songName, songArtist, songAlbum, songViews, songReleased, songLink, songTime, albumThumbnail, albumYear) {
   card.style.display = "block";
 
   if (mode == "Song") {
-    // Card Data
+    // Card Data for Song filter
     const cardImage = card.querySelector("img");
     cardImage.src = songThumbnailUrl;
     cardImage.alt = songName + "'s Thumbnail: " + songThumbnailUrl;
 
     const cardHeader = card.querySelector("h2");
-    cardHeader.innerHTML = ""; // Clear existing content
+    cardHeader.innerHTML = "";
 
     const cardLink = document.createElement("a");
     cardLink.href = songLink;
@@ -111,7 +110,7 @@ function editCardContentSongs(card, songThumbnailUrl, songName, songArtist, song
     cardAlbum.textContent = "Album: " + songAlbum;
 
     const cardViews = card.querySelector("h4");
-    cardViews.textContent = "Views: " + Intl.NumberFormat('en-US').format(songViews);
+    cardViews.textContent = "Views: " + Intl.NumberFormat('en-US').format(songViews); //Adds , to the numbers
 
     const cardDate = card.querySelector("h5");
     cardDate.textContent = "Released: " + songReleased;
@@ -119,6 +118,7 @@ function editCardContentSongs(card, songThumbnailUrl, songName, songArtist, song
     const cardTime = card.querySelector("h6");
     cardTime.textContent = songTime;
   } else {
+    // Card Data for Album filter
     const cardImage = card.querySelector("img");
     cardImage.src = albumThumbnail;
     cardImage.alt = songName + "'s Thumbnail: " + albumThumbnail;
@@ -138,12 +138,6 @@ function editCardContentSongs(card, songThumbnailUrl, songName, songArtist, song
     const cardTime = card.querySelector("h6");
     cardTime.innerHTML = ""; // Clear existing content
   }
-  
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  //console.log("new card:", songName, "- html: ", card);
 }
 
 // Alphabetic Sort Code
@@ -181,8 +175,9 @@ function alphabeticalOrder() {
   
 }
 
+// MergeSort Strings
+
 function mergeSortName(list) {
-  
   if (list.length == 1) {
     return list;
   }
@@ -208,6 +203,8 @@ function mergeSortName(list) {
 
   return mergeName(left, right);
 }
+
+// MergeSort String Helper
 
 function mergeName(left, right) {
   const result = [];
@@ -268,6 +265,8 @@ function viewsOrder() {
   
 }
 
+// MergeSort Int
+
 function mergeSortViews(list) {
   
   if (list.length == 1) {
@@ -294,6 +293,8 @@ function mergeSortViews(list) {
 
   return mergeViews(left, right);
 }
+
+//MergeSort Int Helper
 
 function mergeViews(left, right) {
   const result = [];
@@ -322,7 +323,7 @@ function mergeViews(left, right) {
   return result;
 }
 
-
+// Shows songs based on toAdd
 
 function show() {
   console.log(toAdd)
@@ -357,6 +358,8 @@ function show() {
   }  
 }
 
+// Add button code
+
 function addButton() {
   addButton = document.getElementById("add-More");
   addButton.remove();
@@ -370,7 +373,7 @@ function addButton() {
   show();
 }
 
-// song button
+// Song button code
 
 function songButton() {
 
@@ -396,7 +399,7 @@ function songButton() {
   
 }
 
-// album button
+// Album button code
 
 function albumButton() {
   if (mode == "Song") {
@@ -420,6 +423,8 @@ function albumButton() {
   show();
 }
 
+// Fills AlbumList[] (filters out repeating albums)
+
 function fillAlbumList() {
   for (let x = 0; x < songsList.length; x++) {
     let albumAlreadyExists = false;
@@ -437,6 +442,8 @@ function fillAlbumList() {
   }
   console.log(albumList);
 }
+
+// Search bar code
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-Input");
