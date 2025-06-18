@@ -32,7 +32,7 @@ body {
   text-align: left;
   margin: 0;
   font-size: 6em;
-  font-family: "Inter";
+  font-family: "YT Sans", "Inter";
   font-weight: bold;
   color: white;
 }
@@ -41,7 +41,7 @@ body {
   text-align: left;
   margin: 0;
   font-size: 4em;
-  font-family: "Inter";
+  font-family: "YT Sans", "Inter";
   font-weight: normal;
   color: rgba(255, 255, 255, 0.75);
 }
